@@ -15,10 +15,12 @@ import { SingleMatiereComponent } from './single-matiere/single-matiere.componen
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { Observable } from 'rxjs/Observable';
+import { EditMatiereComponent } from './edit-matiere/edit-matiere.component';
 
 const appRoutes: Routes = [
   { path: 'matieres', canActivate: [AuthGuard], component: MatiereViewComponent },
   { path: 'matieres/:id', canActivate: [AuthGuard], component: SingleMatiereComponent },
+  { path: 'edit', canActivate: [AuthGuard], component: EditMatiereComponent },
   { path: 'auth', component: AuthComponent },
   { path: '', component: MatiereViewComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     MatiereViewComponent,
     SingleMatiereComponent,
     FourOhFourComponent,
+    EditMatiereComponent,
   ],
   imports: [
     BrowserModule,
