@@ -1,11 +1,28 @@
 <app-nav-bar></app-nav-bar>
 
-<app-matieres [matieresName]="matieresOne" [matieresStatus]="'éteint'"></app-matieres>
+<!-- <app-matieres [matieresName]="matieresOne" [matieresStatus]="'éteint'"></app-matieres>
 <app-matieres [matieresName]="matieresTwo" [matieresStatus]="'éteint'"></app-matieres>
-<app-matieres [matieresName]="matieresthree" [matieresStatus]="'allumé'"></app-matieres>
+<app-matieres [matieresName]="matieresthree" [matieresStatus]="'allumé'"></app-matieres> -->
 
-<button class="btn btn-success"
-        [disabled]="!isAuth"
-        (click)="onAllumer()">Tout allumer</button>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Matiere</h2>
+      <ul class="list-group">
+        <app-matiere  *ngFor="let matiere of matieres; let i = index"
+                       [matiereName]="matiere.name"
+                       [matiereStatus]="matiere.status"
+                       [index]="i"></app-matiere>
+      </ul>
+      <button class="btn btn-success"
+              [disabled]="!isAuth"
+              (click)="onAllumer()">Tout allumer</button>
 
-<router-outlet></router-outlet>
+      <button class="btn btn-danger"
+              [disabled]="!isAuth"
+              (click)="onEteindre()">Tout éteindre</button>
+    </div>
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

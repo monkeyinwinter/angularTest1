@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatieresComponent } from './matieres/matieres.component';
+import { MatiereComponent } from './matiere/matiere.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
-
+import { MatiereService } from './services/matiere.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatieresComponent,
+    MatiereComponent,
     NavBarComponent,
   ],
   imports: [
@@ -19,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    MatiereService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

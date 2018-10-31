@@ -1,0 +1,22 @@
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': matiereStatus === 'allumé',
+                'list-group-item-danger': matiereStatus === 'éteint'}">
+                
+  <div style="width:20px;height:20px;background-color:red;"
+       *ngIf="matiereStatus === 'éteint'"></div>
+
+  <div style="width:20px;height:20px;background-color:green;"
+       *ngIf="matiereStatus === 'allumé'"></div>
+
+  <h4 [ngStyle]="{color: getColor()}">Matiere : {{ matiereName }} -- Statut : {{ getStatus() }}</h4>
+
+  <input type="text" class="form-control" [(ngModel)]="matiereName">
+
+  <button class="btn btn-sm btn-success"
+          *ngIf="matiereStatus === 'éteint'"
+          (click)="onSwitch()">Allumer</button>
+  <button class="btn btn-sm btn-danger"
+          *ngIf="matiereStatus === 'allumé'"
+          (click)="onSwitch()">Eteindre</button>
+
+</li>
