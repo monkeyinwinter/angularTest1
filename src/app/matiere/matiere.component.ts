@@ -11,6 +11,7 @@ export class MatiereComponent implements OnInit {
   @Input() matiereName: string;
   @Input() matiereStatus: string;
   @Input() index: number;
+  @Input() id: number;
 
   constructor(private matiereService: MatiereService) {
 

@@ -2,14 +2,17 @@ export class MatiereService {
 
   matieres = [
     {
+      id: 1,
       name: 'Java',
       status: 'éteint'
     },
     {
+      id: 2,
       name: 'Php',
       status: 'allumé'
     },
     {
+      id: 3,
       name: 'Faire des crepes',
       status: 'éteint'
     }
@@ -34,5 +37,14 @@ export class MatiereService {
   switchOffOne(i: number) {
     this.matieres[i].status = 'éteint';
   }
+
+  getMatiereById(id: number) {
+    const matiere = this.matieres.find(
+        (s) => {
+            return s.id === id;
+        }
+    );
+    return matiere;
+}
 
 }

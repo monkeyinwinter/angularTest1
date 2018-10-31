@@ -1,13 +1,24 @@
-<app-nav-bar></app-nav-bar>
+<!-- <app-nav-bar></app-nav-bar> -->
 
 <!-- <app-matieres [matieresName]="matieresOne" [matieresStatus]="'éteint'"></app-matieres>
 <app-matieres [matieresName]="matieresTwo" [matieresStatus]="'éteint'"></app-matieres>
 <app-matieres [matieresName]="matieresthree" [matieresStatus]="'allumé'"></app-matieres> -->
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="auth">Authentification</a></li>
+        <li class="active"><a routerLink="matieres">Matieres</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>Matiere</h2>
+      <!--<h2>Matiere</h2>
       <ul class="list-group">
         <app-matiere  *ngFor="let matiere of matieres; let i = index"
                        [matiereName]="matiere.name"
@@ -21,6 +32,8 @@
       <button class="btn btn-danger"
               [disabled]="!isAuth"
               (click)="onEteindre()">Tout éteindre</button>
+      <app-matiere-view></app-matiere-view>-->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

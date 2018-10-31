@@ -1,7 +1,7 @@
 <li [ngClass]="{'list-group-item': true,
                 'list-group-item-success': matiereStatus === 'allumé',
                 'list-group-item-danger': matiereStatus === 'éteint'}">
-                
+
   <div style="width:20px;height:20px;background-color:red;"
        *ngIf="matiereStatus === 'éteint'"></div>
 
@@ -9,6 +9,7 @@
        *ngIf="matiereStatus === 'allumé'"></div>
 
   <h4 [ngStyle]="{color: getColor()}">Matiere : {{ matiereName }} -- Statut : {{ getStatus() }}</h4>
+  <a [routerLink]="[id]">Détail</a>
 
   <input type="text" class="form-control" [(ngModel)]="matiereName">
 

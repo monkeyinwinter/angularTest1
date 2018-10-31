@@ -43,18 +43,18 @@ export class AppComponent implements OnInit {
   ngOnInit() {
       this.matieres = this.matiereService.matieres;
   }
-
-  onAllumer() {
-      console.log('On allume tout !');
-      this.matiereService.switchOnAll();
-  }
-
-  onEteindre() {
-      if(confirm('Etes-vous sûr de vouloir éteindre toutes vos matieres ?')) {
-        this.matiereService.switchOffAll();
-      } else {
-        return null;
-      }
-  }
+  //
+  // onAllumer() {
+  //     console.log('On allume tout !');
+  //     this.matiereService.switchOnAll();
+  // }
+  //
+  // onEteindre() {
+  //     if(confirm('Etes-vous sûr de vouloir éteindre toutes vos matieres ?')) {
+  //       this.matiereService.switchOffAll();
+  //     } else {
+  //       return null;
+  //     }
+  // }
 
 }
