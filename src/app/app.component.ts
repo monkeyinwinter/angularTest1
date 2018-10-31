@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularTest1';
+  isAuth = false;
+
+  matieresOne = 'java';
+  matieresTwo = 'php';
+  matieresthree = 'faire des crêpes';
+
+  constructor() {
+    setTimeout(
+      () => {
+        this.isAuth = true;
+      }, 4000
+    );
+  }
+  onAllumer() {
+      console.log('On allume tout !');
+  }
 }
