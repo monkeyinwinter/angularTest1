@@ -12,6 +12,7 @@
         <li routerLinkActive="active"><a routerLink="matieres">Matieres</a></li>
       </ul>
       <div class="navbar-right">
+          <p>Mis à jour : {{ lastUpdate | async | date: 'EEEE d MMMM y' | uppercase }}</p>
           <p>Vous êtes connecté depuis {{ secondes }} secondes !</p>
       </div>
     </div>
@@ -21,21 +22,6 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <!--<h2>Matiere</h2>
-      <ul class="list-group">
-        <app-matiere  *ngFor="let matiere of matieres; let i = index"
-                       [matiereName]="matiere.name"
-                       [matiereStatus]="matiere.status"
-                       [index]="i"></app-matiere>
-      </ul>
-      <button class="btn btn-success"
-              [disabled]="!isAuth"
-              (click)="onAllumer()">Tout allumer</button>
-
-      <button class="btn btn-danger"
-              [disabled]="!isAuth"
-              (click)="onEteindre()">Tout éteindre</button>
-      <app-matiere-view></app-matiere-view>-->
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -17,6 +17,14 @@ export class AppComponent implements OnInit {
 
   counterSubscription: Subscription;
 
+  lastUpdate = new Promise((resolve, reject) => {
+      const date = new Date();
+      setTimeout(
+        () => {
+          resolve(date);
+        }, 2000
+      );
+    });
 
   constructor(private matiereService: MatiereService) {
     setTimeout(

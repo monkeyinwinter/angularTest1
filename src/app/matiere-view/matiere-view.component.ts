@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class MatiereViewComponent implements OnInit, OnDestroy {
 
   matieres: any[];
-  appareilSubscription: Subscription;
+  matiereSubscription: Subscription;
   isAuth: false;
 
   constructor(private matiereService: MatiereService) { }
