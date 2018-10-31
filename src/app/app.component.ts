@@ -35,21 +35,21 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-      //this.matieres = this.matiereService.matieres;
-      const counter = interval(1000);
 
-      this.counterSubscription = counter.subscribe(
-        (value) => {
-          this.secondes = value;
-          console.log('ok ça tourne'/* + this.secondes*/);
-        },
-        (error) => {
-          console.log('Uh-oh, an error occurred! : ' + error);
-        },
-        () => {
-          console.log('Observable complete!');
-        }
-      );
+      // const counter = interval(1000);
+      //
+      // this.counterSubscription = counter.subscribe(
+      //   (value) => {
+      //     this.secondes = value;
+      //     console.log('ok ça tourne'/* + this.secondes*/);
+      //   },
+      //   (error) => {
+      //     console.log('Uh-oh, an error occurred! : ' + error);
+      //   },
+      //   () => {
+      //     console.log('Observable complete!');
+      //   }
+      // );
   }
 
   ngOnDestroy() {

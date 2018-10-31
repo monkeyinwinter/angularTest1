@@ -57,6 +57,19 @@ export class MatiereService {
         }
     );
     return matiere;
-}
+  }
+
+  addMatiere(name: string, status: string) {
+    const matiereObject = {
+      id: 0,
+      name: '',
+      status: ''
+    };
+    matiereObject.name = name;
+    matiereObject.status = status;
+    matiereObject.id = this.matieres[(this.matieres.length - 1)].id + 1;
+    this.matieres.push(matiereObject);
+    this.emitMatiereSubject();
+  }
 
 }
