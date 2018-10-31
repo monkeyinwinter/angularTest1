@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatiereService } from './services/matiere.service';
 import { interval} from 'rxjs/observable/interval';
-
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
