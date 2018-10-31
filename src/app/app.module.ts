@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, OnDestroy } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,15 +9,20 @@ import { FormsModule } from '@angular/forms';
 import { MatiereService } from './services/matiere.service';
 import { AuthComponent } from './auth/auth.component';
 import { MatiereViewComponent } from './matiere-view/matiere-view.component';
-import {RouterModule, Routes} from '@angular/router';
-import {AuthService} from './services/auth.service';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthService} from './services/auth.service';
 import { SingleMatiereComponent } from './single-matiere/single-matiere.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { Observable } from 'rxjs/Observable';
 
 const appRoutes: Routes = [
-  { path: 'matieres', component: MatiereViewComponent },
-  { path: 'matieres/:id', component: SingleMatiereComponent },
+  { path: 'matieres', canActivate: [AuthGuard], component: MatiereViewComponent },
+  { path: 'matieres/:id', canActivate: [AuthGuard], component: SingleMatiereComponent },
   { path: 'auth', component: AuthComponent },
-  { path: '', component: MatiereViewComponent }
+  { path: '', component: MatiereViewComponent },
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
@@ -28,6 +33,7 @@ const appRoutes: Routes = [
     AuthComponent,
     MatiereViewComponent,
     SingleMatiereComponent,
+    FourOhFourComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     MatiereService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

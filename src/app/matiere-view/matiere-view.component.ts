@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatiereService } from '../services/matiere.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-matiere-view',
@@ -7,24 +8,21 @@ import { MatiereService } from '../services/matiere.service';
   styleUrls: ['./matiere-view.component.css']
 })
 
-export class MatiereViewComponent implements OnInit {
+export class MatiereViewComponent implements OnInit, OnDestroy {
 
   matieres: any[];
-
+  appareilSubscription: Subscription;
   isAuth: false;
-  // lastUpdate = new Promise((resolve, reject) => {
-  //   const date = new Date();
-  //   setTimeout(
-  //     () => {
-  //       resolve(date);
-  //     }, 2000
-  //   );
-  // });
 
   constructor(private matiereService: MatiereService) { }
 
   ngOnInit() {
-    this.matieres = this.matiereService.matieres;
+    this.matiereSubscription = this.matiereService.matieresSubject.subscribe(
+      (matieres: any[]) => {
+        this.matieres = matieres;
+      }
+    );
+    this.matiereService.emitMatiereSubject();
   }
 
   onAllumer() {
@@ -37,6 +35,10 @@ export class MatiereViewComponent implements OnInit {
     } else {
       return null;
     }
+  }
+
+  ngOnDestroy() {
+    this.matiereSubscription.unsubscribe();
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatiereService } from './services/matiere.service';
+import { interval} from 'rxjs/observable/interval';
+
 
 @Component({
   selector: 'app-root',
@@ -9,28 +11,12 @@ import { MatiereService } from './services/matiere.service';
 export class AppComponent implements OnInit {
   isAuth = false;
 
-  // matieresOne = 'java';
-  // matieresTwo = 'php';
-  // matieresthree = 'faire des crêpes';
-
-
-  // matieres = [
-  //   {
-  //     name: 'Java',
-  //     status: 'éteint'
-  //   },
-  //   {
-  //     name: 'Php',
-  //     status: 'allumé'
-  //   },
-  //   {
-  //     name: 'Faire des crepes',
-  //     status: 'éteint'
-  //   }
-  // ];
-
-
   matieres: any[];
+
+  secondes: number;
+
+  counterSubscription: Subscription;
+
 
   constructor(private matiereService: MatiereService) {
     setTimeout(
@@ -41,20 +27,25 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.matieres = this.matiereService.matieres;
+      //this.matieres = this.matiereService.matieres;
+      const counter = interval(1000);
+
+      this.counterSubscription = counter.subscribe(
+        (value) => {
+          this.secondes = value;
+          console.log('ok ça tourne'/* + this.secondes*/);
+        },
+        (error) => {
+          console.log('Uh-oh, an error occurred! : ' + error);
+        },
+        () => {
+          console.log('Observable complete!');
+        }
+      );
   }
-  //
-  // onAllumer() {
-  //     console.log('On allume tout !');
-  //     this.matiereService.switchOnAll();
-  // }
-  //
-  // onEteindre() {
-  //     if(confirm('Etes-vous sûr de vouloir éteindre toutes vos matieres ?')) {
-  //       this.matiereService.switchOffAll();
-  //     } else {
-  //       return null;
-  //     }
-  // }
+
+  ngOnDestroy() {
+    this.counterSubscription.unsubscribe();
+  }
 
 }
