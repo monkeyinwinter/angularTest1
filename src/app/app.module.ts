@@ -19,6 +19,7 @@ import { EditMatiereComponent } from './edit-matiere/edit-matiere.component';
 import { UserService} from './services/user.service';
 import { UserListComponent} from './user-list/user-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes: Routes = [
   { path: 'matieres', canActivate: [AuthGuard], component: MatiereViewComponent },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'edit', canActivate: [AuthGuard], component: EditMatiereComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'users', component: UserListComponent },
+  { path: 'new-user', component: NewUserComponent },
   { path: '', component: MatiereViewComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     SingleMatiereComponent,
     FourOhFourComponent,
     EditMatiereComponent,
-    UserListComponent
+    UserListComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
