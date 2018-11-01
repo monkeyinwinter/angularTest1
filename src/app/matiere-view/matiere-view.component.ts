@@ -30,7 +30,7 @@ export class MatiereViewComponent implements OnInit, OnDestroy {
   }
 
   onEteindre() {
-    if(confirm('Etes-vous sûr de vouloir éteindre toutes vos matiereS ?')) {
+    if(confirm('Etes-vous sûr de vouloir éteindre toutes vos matieres ?')) {
       this.matiereService.switchOffAll();
     } else {
       return null;

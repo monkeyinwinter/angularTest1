@@ -22,7 +22,8 @@ export class EditMatiereComponent implements OnInit {
       console.log(form.value);
       const name = form.value['name'];
       const status = form.value['status'];
-      this.matiereService.addMatiere(name, status);
+      const like = form.value['like'];
+      this.matiereService.addMatiere(name, status, like);
       this.router.navigate(['/matieres']);
   }
 

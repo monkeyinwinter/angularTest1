@@ -8,7 +8,8 @@
   <div style="width:20px;height:20px;background-color:green;"
        *ngIf="matiereStatus === 'allumé'"></div>
 
-  <h4 [ngStyle]="{color: getColor()}">Matiere : {{ matiereName }} -- Statut : {{ getStatus() }}</h4>
+  <h4 [ngStyle]="{color: getColor()}">Matiere : {{ matiereName }}  ->  Statut : {{ getStatus()}}</h4>
+  <h4>Like : {{ getLike()}}</h4>
   <a [routerLink]="[id]">Détail</a>
 
   <input type="text" class="form-control" [(ngModel)]="matiereName">
@@ -19,5 +20,11 @@
   <button class="btn btn-sm btn-danger"
           *ngIf="matiereStatus === 'allumé'"
           (click)="onSwitch()">Eteindre</button>
+
+  <button class="btn btn-sm"
+          (click)="onLike()">LIKE</button>
+
+  <button class="btn btn-sm"
+          (click)="onDislike()">DISLIKE</button>
 
 </li>

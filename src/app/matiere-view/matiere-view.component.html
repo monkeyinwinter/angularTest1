@@ -3,6 +3,7 @@
   <app-matiere  *ngFor="let matiere of matieres; let i = index"
                  [matiereName]="matiere.name"
                  [matiereStatus]="matiere.status"
+                 [matiereLike]="matiere.like"
                  [index]="i"
                  [id]="matiere.id"></app-matiere>
 </ul>

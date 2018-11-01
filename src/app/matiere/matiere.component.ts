@@ -10,8 +10,10 @@ export class MatiereComponent implements OnInit {
 
   @Input() matiereName: string;
   @Input() matiereStatus: string;
+  @Input() matiereLike: number;
   @Input() index: number;
   @Input() id: number;
+
 
   constructor(private matiereService: MatiereService) {
 
@@ -22,6 +24,18 @@ export class MatiereComponent implements OnInit {
     } else if(this.matiereStatus === 'éteint') {
       this.matiereService.switchOnOne(this.index);
     }
+  }
+
+  onLike(){
+    console.log('+1');
+     this.matiereLike = this.matiereService.onLike(this.index);
+     //return this.matiereLike;
+  }
+
+  onDislike(){
+    console.log('-1');
+    this.matiereLike = this.matiereService.onDislike(this.index);
+    // return this.matiereLike;
   }
 
   ngOnInit() {
@@ -37,6 +51,11 @@ export class MatiereComponent implements OnInit {
       } else if(this.matiereStatus === 'éteint') {
         return 'red';
       }
+  }
+
+  getLike() {
+    /*return 1;*/
+    return this.matiereLike;
   }
 
 }

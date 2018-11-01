@@ -8,17 +8,20 @@ export class MatiereService {
     {
       id: 1,
       name: 'Java',
-      status: 'éteint'
+      status: 'éteint',
+      like: 1
     },
     {
       id: 2,
       name: 'Php',
-      status: 'allumé'
+      status: 'allumé',
+      like: 2
     },
     {
       id: 3,
-      name: 'Faire des crepes',
-      status: 'éteint'
+      name: 'Faire des crêpes',
+      status: 'éteint',
+      like: 0
     }
   ];
 
@@ -40,6 +43,16 @@ export class MatiereService {
     }
   }
 
+  onLike(i: number) {
+    this.matieres[i].like = this.matieres[i].like +1;
+    return this.matieres[i].like;
+  }
+
+  onDislike(i: number) {
+    this.matieres[i].like = this.matieres[i].like -1;
+    return this.matieres[i].like;
+  }
+
   switchOnOne(i: number) {
     this.matieres[i].status = 'allumé';
     this.emitMatiereSubject();
@@ -59,14 +72,16 @@ export class MatiereService {
     return matiere;
   }
 
-  addMatiere(name: string, status: string) {
+  addMatiere(name: string, status: string, like: number) {
     const matiereObject = {
       id: 0,
       name: '',
-      status: ''
+      status: '',
+      like: 0,
     };
     matiereObject.name = name;
     matiereObject.status = status;
+    matiereObject.like = like;
     matiereObject.id = this.matieres[(this.matieres.length - 1)].id + 1;
     this.matieres.push(matiereObject);
     this.emitMatiereSubject();
