@@ -10,6 +10,7 @@
 
   <h4 [ngStyle]="{color: getColor()}">Matiere : {{ matiereName }}  ->  Statut : {{ getStatus()}}</h4>
   <h4>Like : {{ getLike()}}</h4>
+  <h4>Dislike : {{ getDislike()}}</h4>
   <a [routerLink]="[id]">Détail</a>
 
   <input type="text" class="form-control" [(ngModel)]="matiereName">

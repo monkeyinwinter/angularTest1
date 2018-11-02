@@ -11,6 +11,7 @@ export class MatiereComponent implements OnInit {
   @Input() matiereName: string;
   @Input() matiereStatus: string;
   @Input() matiereLike: number;
+  @Input() matiereDislike: number;
   @Input() index: number;
   @Input() id: number;
 
@@ -29,13 +30,11 @@ export class MatiereComponent implements OnInit {
   onLike(){
     console.log('+1');
      this.matiereLike = this.matiereService.onLike(this.index);
-     //return this.matiereLike;
   }
 
   onDislike(){
     console.log('-1');
-    this.matiereLike = this.matiereService.onDislike(this.index);
-    // return this.matiereLike;
+    this.matiereDislike = this.matiereService.onDislike(this.index);
   }
 
   ngOnInit() {
@@ -54,8 +53,10 @@ export class MatiereComponent implements OnInit {
   }
 
   getLike() {
-    /*return 1;*/
     return this.matiereLike;
+  }
+  getDislike() {
+    return this.matiereDislike;
   }
 
 }
