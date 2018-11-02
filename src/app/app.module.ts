@@ -1,25 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, OnDestroy } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MatiereComponent } from './matiere/matiere.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { FormsModule } from '@angular/forms';
-import { MatiereService } from './services/matiere.service';
-import { AuthComponent } from './auth/auth.component';
-import { MatiereViewComponent } from './matiere-view/matiere-view.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthService} from './services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { Observable } from 'rxjs/Observable';
+
+import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
+import { MatiereComponent } from './matiere/matiere.component';
+import { MatiereViewComponent } from './matiere-view/matiere-view.component';
+import { EditMatiereComponent } from './edit-matiere/edit-matiere.component';
 import { SingleMatiereComponent } from './single-matiere/single-matiere.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { Observable } from 'rxjs/Observable';
-import { EditMatiereComponent } from './edit-matiere/edit-matiere.component';
-import { UserService} from './services/user.service';
 import { UserListComponent} from './user-list/user-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { NewUserComponent } from './new-user/new-user.component';
+
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService} from './services/auth.service';
+import { MatiereService } from './services/matiere.service';
+import { UserService} from './services/user.service';
 
 const appRoutes: Routes = [
   { path: 'matieres', canActivate: [AuthGuard], component: MatiereViewComponent },
@@ -36,13 +36,12 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MatiereComponent,
-    NavBarComponent,
     AuthComponent,
+    MatiereComponent,
     MatiereViewComponent,
     SingleMatiereComponent,
-    FourOhFourComponent,
     EditMatiereComponent,
+    FourOhFourComponent,
     UserListComponent,
     NewUserComponent
   ],
