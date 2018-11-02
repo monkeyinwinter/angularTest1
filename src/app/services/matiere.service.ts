@@ -46,6 +46,20 @@ export class MatiereService {
     }
   }
 
+  allLike() {
+    for(let matiere of this.matieres) {
+      matiere.like = matiere.like +1;
+      this.emitMatiereSubject();
+    }
+  }
+
+  allDislike() {
+    for(let matiere of this.matieres) {
+      matiere.dislike = matiere.dislike +1;
+      this.emitMatiereSubject();
+    }
+  }
+
   onLike(i: number) {
     this.matieres[i].like = this.matieres[i].like +1;
     return this.matieres[i].like;

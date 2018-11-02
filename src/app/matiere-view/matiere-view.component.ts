@@ -25,6 +25,14 @@ export class MatiereViewComponent implements OnInit, OnDestroy {
     this.matiereService.emitMatiereSubject();
   }
 
+  allLike() {
+    this.matiereService.allLike();
+  }
+
+  allDislike() {
+    this.matiereService.allDislike();
+  }
+
   onAllumer() {
     this.matiereService.switchOnAll();
   }
