@@ -27,6 +27,11 @@ export class MatiereComponent implements OnInit {
     }
   }
 
+  delete(){
+    console.log('delete');
+     this.matiereService.delete(this.index);
+  }
+
   onLike(){
     console.log('+1');
      this.matiereLike = this.matiereService.onLike(this.index);

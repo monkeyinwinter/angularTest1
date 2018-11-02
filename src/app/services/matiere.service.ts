@@ -60,7 +60,7 @@ export class MatiereService {
     }
   }
 
-  onLike(i) {
+  onLike(i: number) {
     this.matieres[i].like = this.matieres[i].like + 1;
     return this.matieres[i].like;
   }
@@ -77,6 +77,11 @@ export class MatiereService {
 
   switchOffOne(i: number) {
     this.matieres[i].status = 'éteint';
+    this.emitMatiereSubject();
+  }
+
+  delete(i: number){
+    this.matieres.splice(i, 1);
     this.emitMatiereSubject();
   }
 
