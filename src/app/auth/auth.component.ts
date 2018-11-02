@@ -12,7 +12,10 @@ export class AuthComponent implements OnInit {
 
   authStatus: boolean;
 
+  styleInfoConnect : string = "unconnect";
+
   constructor(private authService: AuthService, private router: Router) { }
+
 
   ngOnInit() {
     this.authStatus = this.authService.isAuth;
@@ -21,7 +24,7 @@ export class AuthComponent implements OnInit {
   onSignIn() {
     this.authService.signIn().then(
       () => {
-        console.log('Sign in successful!');
+        //console.log('Sign in successful!');
         this.authStatus = this.authService.isAuth;
         this.router.navigate(['matieres']);
       }
@@ -29,7 +32,7 @@ export class AuthComponent implements OnInit {
   }
 
   onSignOut() {
-    console.log('Sign off successful!');
+    //console.log('Sign off successful!');
     this.authService.signOut();
     this.authStatus = this.authService.isAuth;
   }
@@ -37,14 +40,16 @@ export class AuthComponent implements OnInit {
   onSubmit(form: NgForm) {
       const password = form.value['password'];
       if (password === 'password'){
+        this.styleInfoConnect  = "connect";
         console.log('Sign in successful!');
-        this.authStatus = this.authService.isAuth;
-        this.router.navigate(['/matieres']);
+
       }
       else{
-        console.log('Sign in pas bon!');
+        confirm('Mauvais mot de passe , effacer la saisie et ré-essayer de taper un mot de passe')
+        //console.log('Sign in pas bon!');
         this.router.navigate(['/auth']);
       }
   }
+
 
 }
