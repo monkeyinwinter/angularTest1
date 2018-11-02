@@ -1,3 +1,21 @@
 <h2>Authentification</h2>
-<button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se connecter</button>
-<button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se déconnecter</button>
+
+
+
+
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(x)" #x="ngForm">
+      <div class="form-group">
+        <label for="password">
+          tape le password
+        </label>
+        <input type="text" id="password" class="form-control" name="password" ngModel required>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="x.invalid">valider</button>
+    </form>
+    <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()" [disabled]="x.invalid">Se connecter</button>
+    <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se déconnecter</button>
+  </div>
+</div>
